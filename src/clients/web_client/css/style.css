@@ -1,0 +1,405 @@
+@font-face {
+	font-family: Roboto-Light;
+	src: url(http://static1.djam.io/fonts/roboto/Roboto-Light.ttf?v=1);
+}
+
+@font-face {
+	font-family: Roboto-Bold;
+	src: url(http://static1.djam.io/fonts/roboto/Roboto-Bold.ttf?v=1);
+}
+
+@font-face {
+	font-family: Roboto-Thin;
+	src: url(http://static1.djam.io/fonts/roboto/Roboto-Thin.ttf?v=1);
+}
+
+* {
+	margin: 0px;
+	outline: none;
+	padding: 0px;
+}
+
+*::selection {
+	color: #FFF;
+	background: #FF0060;
+}
+
+*::-moz-selection {
+	color: #FFF;
+	background: #FF0060;
+}
+
+html, body {
+	background-color: #252525;
+	font-family: Roboto-Light;
+	height: 100%;
+	overflow: hidden;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+a {
+	color: #30B8FF;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF0060;
+}
+
+button {
+	background-color: #FE4032;
+	border: none;
+	color: #FFF;
+	padding: 10px;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+canvas {
+	background-color: #FFF;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+}
+
+h1, h2 {
+	font-family: Roboto-Bold;
+	font-weight: normal;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+img {
+	border: none;
+}
+
+input {
+	border: none;
+	color: #000;
+	font-family: Roboto-light;
+}
+
+ul li {
+	list-style-type: none;
+}
+
+#players {
+	bottom: 30px;
+	left: 30px;
+	position: fixed;
+	z-index: 20;
+}
+
+#players li {
+	background-color: transparent;
+	border: 2px solid #FFF;
+	cursor: pointer;
+	float: left;
+	font-family: Roboto-Bold;
+	font-size: 15px;
+	margin: 10px 20px 0px 0px;
+	min-width: 50px;
+}
+
+#players .name {
+	padding: 5px;
+}
+
+#room {
+	top: 30px;
+	position: fixed;
+	right: 30px;
+	z-index: 20;
+}
+
+#room li {
+	float: left;
+	position: relative;
+}
+
+#room a {
+	background-color: #30B8FF;
+	color: #FFF;
+	display: block;
+	font-family: Roboto-Bold;
+	font-size: 15px;
+	margin-left: 10px;
+	padding: 15px;
+	transition: cubic-bezier(0.24,.8,.55,.94) .2s
+}
+
+#room .random {
+	display: none;
+}
+
+#room .new:hover a, #room .random a {
+	background-color: #FF0060;
+}
+
+/* Popups */
+.popup {
+	background-color: rgba(255, 255, 255, .95);
+	color: #000;
+	display: none;
+	height: 100%;
+	right: 0px;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 20;
+}
+
+.popup .close {
+	background-image: url('http://static1.djam.io/images/close.svg#v1');
+	background-repeat: no-repeat;
+	cursor: pointer;
+	display: inline-block;
+	height: 20px;
+	margin: 20px;
+	padding: 10px;
+	width: 20px
+}
+
+.popup .content {
+	height: 100%;
+	left: 50%;
+	margin: 0 0 0 -75px;
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	width: 150px;
+}
+
+.popup .content > div {
+	height: 100%;
+}
+
+.popup .content .title {
+	font-family: Roboto-Thin;
+	font-size: 50px;
+	margin: 100px 0px 140px 0px;
+	text-align: center;
+}
+
+.popup .content .error {
+	color: #FF3F3F;
+	position: absolute;
+	text-align: center;
+	top: 180px;
+	width: 100%;
+}
+
+.popup .form li {
+	margin: 50px 0px 50px 0px;
+	text-align: center;
+}
+
+.form li:last-child {
+	margin: 0;
+}
+
+.popup .form input {
+	background-color: transparent;
+	box-sizing: border-box;
+	border-bottom: 1px dashed #A630FF;
+	font-size: 17px;
+	padding-bottom: 15px;
+	text-align: center;
+	width: 100%;
+}
+
+.popup .form select {
+	background-color: transparent;
+	border: 1px solid #A630FF;
+	box-sizing: border-box;
+	padding: 10px;
+	margin-right: 25px;
+	text-align: center;
+}
+
+.popup .form select, .popup .form option {
+	text-align: center;
+}
+
+.popup .form input[type="radio"] {
+	color: #000;
+	display: inline-block;
+	margin-right: 5px;
+	width: auto;
+}
+
+.popup .form input[name="public"]:nth-child(2) {
+	margin-left: 18px;
+}
+
+.popup .form .button {
+	background-color: #A630FF;
+	bottom: 0px;
+	box-sizing: border-box;
+	color: #FFF;
+	cursor: pointer;
+	display: block;
+	font-family: Roboto-Bold;
+	margin: 200px 0px 60px 0px;
+	padding: 15px;
+	position: absolute;
+	text-align: center;
+	transition: cubic-bezier(0.24,.8,.55,.94) .2s;
+	width: 100%;
+}
+
+.popup .form .button:hover {
+	background-color: #FF30A6;
+}
+
+.popup .form .button.gray {
+	background-color: transparent;
+	border: 1px solid #A630FF;
+	color: #A630FF;
+}
+
+.popup .form .button.gray:hover {
+	background-color: #FF30A6;
+	border: 1px solid #FF30A6;
+	color: #FFF;
+}
+
+/* Title Screen  */
+#title {
+	background-color: transparent;
+	height: 100%;
+	left: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+}
+
+#splash {
+	position: absolute;
+	height: 130px;
+	left: 50%;
+	margin-top: -75px;
+	margin-left: -144px;
+	text-align: center;
+	top: 50%;
+	width: 288px;
+}
+
+#splash > div {
+	display: inline-block;
+	font-family: Roboto-Thin;
+	font-size: 25px;
+	text-align: center;
+}
+
+#splash .logo a {
+	background-image: url('http://static1.djam.io/images/djamio.svg');
+	background-size: 100% 100%;
+	display: block;
+	height: 45px;
+	width: 279px;
+}
+
+#splash .play {
+	margin-top: 25px;
+}
+
+#splash .play a {
+	color: #FF0060;
+	padding: 3px 10px 3px 10px;
+	transition: cubic-bezier(0.24,.8,.55,.94) .2s;
+}
+
+#splash .play a:hover {
+	background-color: #FF0060;
+	color: #FFF;
+}
+
+#splash .play {
+	font-family: Roboto-Light;
+	font-size: 40px;
+}
+
+/* Stage */
+#stage {
+	background-color: transparent;
+	display: none;
+	height: 100%;
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+}
+
+#stage .room404 {
+	display: none;
+	margin: 0 auto;
+	margin-top: 300px;
+	text-align: center;
+	width: 500px;
+}
+
+#stage .room404 a[data-func="play"] {
+	color: #FF0060;
+}
+
+#infos {
+	display: inline-block;
+}
+
+#infos .logo a {
+	background-image: url('http://static1.djam.io/images/djamio.svg');
+	background-size: 100% 100%;
+	display: block;
+	opacity: .05;
+	position: absolute;
+	height: 45px;
+	left: 50%;
+	margin-top: -75px;
+	margin-left: -144px;
+	text-align: center;
+	top: 50%;
+	width: 288px;
+}
+
+#infos .room-name {
+	position: relative;
+}
+
+#infos .room-name .name {
+	font-family: Roboto-Bold;
+	font-size: 30px;
+	padding: 20px 20px 5px 30px;
+	text-transform: uppercase;
+}
+
+#infos .room-name .live {
+	background-color: #F00;
+	color: #FFF;
+	font-family: Roboto-Bold;
+	font-size: 12px;
+	padding: 0px 3px 0px 3px;
+	right: -10px;
+	position: absolute;
+	top: 10px;
+}
+
+#infos .console {
+	bottom: 30px;
+	font-family: Roboto-Thin;
+	font-size: 14px;
+	position: absolute;
+	right: 30px;
+}
+
+

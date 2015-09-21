@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Djam.io</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Plug in your midi controller and play music with people online.">
+		<link type="image/png" rel="icon" href="http://static1.djam.io/images/favicon16.png?v=2">
+		<link type="text/css" rel="stylesheet" href="http://static1.djam.io/css/style.css?v=1">
+		<script type="text/javascript">
+			var network = null;
+			var audio = null;
+			var midi = null;
+			var stage = null;
+			var viz = null;
+			var app = null;
+			
+			var room = null;
+			var player = null;
+		</script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://static1.djam.io/js/socket.io-1.1.0.js?v=1"></script>	
+		<script type="text/javascript" src="http://static1.djam.io/js/network.js?v=1"></script>
+		<script type="text/javascript" src="http://static1.djam.io/js/audio.js?v=1"></script>
+		<script type="text/javascript" src="http://static1.djam.io/js/midi.js?v=1"></script>
+		<script type="text/javascript" src="http://static1.djam.io/js/stage.js?v=1"></script>	
+		<script type="text/javascript" src="http://static1.djam.io/js/viz.js?v=1"></script>	
+		<script type="text/javascript" src="http://static1.djam.io/js/app.js?v=1"></script>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>	
+		<ul id="players">
+			<li class="localplayer">
+				<div class="name" contenteditable="true" spellcheck="false"></div>
+			</li>
+		</ul>
+		<ul id="room">
+			<li class="random"><a data-func="play">Random</a></li>
+			<li class="new"><a data-func="newRoom">New</a></li>
+		</ul>
+		<div id="title">
+			<div id="splash">
+				<div class="logo">
+					<a href="/"></a>
+				</div>
+				<div class="play"><a data-func="play">Play</a></div>
+			</ul>
+			</div>	
+		</div>
+		<div id="stage">
+			<div id="infos">
+				<div class="logo"><a href="/"></a></div>
+				<div class="room-name"><div class="name"></div><div class="live">Live</div></div>
+				<div class="console"></div>
+			</div>
+			<div class="room404"><h2>Room Not Found</h2><br /><a data-func="play">Join a random room</a> or <a data-func="newRoom">Create a new one</a></div>
+		</div>
+		<div id="new">
+			<div class="title">New</div>
+			<ul class="form">
+				<li><input type="text" placeholder="Session Name" autocomplete="off" autocorrect="off"></li>
+				<li>
+					<select>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5" selected="selected">5</option>
+					</select> Players
+				</li>
+				<li><a class="button">Play</a></li>
+			</ul>
+		</div>
+	</body>
+</html>
